@@ -88,20 +88,18 @@
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
+  services.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.felixcool200 = {
     isNormalUser = true;
     description = "Felix Söderman";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "wireshark"];
     packages = with pkgs; [
         flatpak
         gnome-software
         zig
         ghostty
-        wireshark
-        #vscode
         bitwarden-desktop
 
         (vscode-with-extensions.override {
@@ -116,23 +114,14 @@
     ];
   };
 
-  # Install VSCode
-  #programs.vscode = {
-  #  enable = true;
-  #  extensions = with pkgs.vscode-extensions; [
-  #    dracula-theme.theme-dracula
-  #    ms-python.python
-  #    ms-vscode.cpptools
-  #    ziglang.vscode-zig
-  #  ];
-  #};
-
   # Install firefox.
   programs.firefox.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  # Allow wireshark to capture traffic
+  programs.wireshark.enable = true;
 
   # Remove unwanted packages
   environment.gnome.excludePackages = with pkgs; [
@@ -162,6 +151,7 @@
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     htop
+    wireshark
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
