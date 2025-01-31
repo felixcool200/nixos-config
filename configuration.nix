@@ -101,7 +101,8 @@
         zig
         ghostty
         bitwarden-desktop
-
+        google-chrome
+        gnomeExtensions.dash-to-dock
         (vscode-with-extensions.override {
             vscodeExtensions = with vscode-extensions; [
                 dracula-theme.theme-dracula
@@ -137,6 +138,7 @@
 
     # these should be self explanatory
     gnome-text-editor gnome-tour
+    # gnome-shell-extensions # Default gnome extentions
     gnome-calculator gnome-calendar gnome-characters gnome-clocks gnome-contacts
     gnome-font-viewer gnome-logs gnome-maps gnome-music
     #gnome-screenshot gnome-system-monitor
