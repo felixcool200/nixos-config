@@ -41,13 +41,26 @@
     };
   };
 
-  home.file.".bashrc".source = builtins.toPath ./bashrc;
-
-  home.file.".config/ghostty/config".source = builtins.toPath ./ghostty/config;
+  #  custom-shader = ${toString ./ghostty/ghostty-shaders/starfield.glsl}
+  home.file.".config/ghostty/config".text = ''
+    config-file = ${toString ./ghostty/config}
+  '';
 
   # Set environment variables
   home.sessionVariables = {
     TERMINAL = "ghostty";
+    VISUAL = "vim";
+    EDITOR = "vim";
+  };
+
+  # Create aliases
+  programs.bash = {
+    enable = true;
+    shellAliases = {
+      ll = "ls -lah";
+      gs = "git status";
+      rebuildOS = "nixos-rebuild --flake ~/Documents/nixos-config switch --impure --use-remote-sudo";
+    };
   };
 
   programs.git = {
