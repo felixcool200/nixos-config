@@ -2,12 +2,9 @@
 
 {
 
-  # Enable dconf support in Home Manager
-  programs.dconf.enable = true;
-
   # Import dconf settings from an external file
   imports = [
-    /etc/nixos/dconf/dconf.nix
+    ./dconf/dconf.nix
   ];
 
   home.username = "felixcool200";
@@ -44,9 +41,9 @@
     };
   };
 
-  home.file.".bashrc".source = "/etc/nixos/bashrc";
+  home.file.".bashrc".source = builtins.toPath ./bashrc;
 
-  home.file.".config/ghostty/config".source = "/etc/nixos/ghostty/config";
+  home.file.".config/ghostty/config".source = builtins.toPath ./ghostty/config;
 
   # Set environment variables
   home.sessionVariables = {
@@ -56,7 +53,7 @@
   programs.git = {
     enable = true;
     userName = "Felix Söderman";
-    userEmail = "felixsoderman@gmail.com";
+    userEmail = "felixsoderman+github@gmail.com";
   };
 
   # Enable Home Manager

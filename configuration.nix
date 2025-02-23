@@ -7,7 +7,7 @@
   nixpkgs.config.allowUnfree = true;
  
    imports =
-    [ ./hardware-configuration.nix ];
+    [ /etc/nixos/hardware-configuration.nix ];
 
   # Bootloader
   boot.loader.grub.enable = true;
