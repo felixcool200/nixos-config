@@ -18,6 +18,9 @@ window-width=800
 is-maximized=false
 window-size=(960, 600)
 
+[org/gnome/cheese]
+burst-delay=1000
+
 [org/gnome/clocks/state/window]
 maximized=false
 panel-id='world'
@@ -130,5 +133,20 @@ welcome-dialog-last-shown-version='47.2'
 locations=@av []
 
 [org/gnome/software]
-check-timestamp=int64 1738338375
+check-timestamp=int64 1740321207
 first-run=false
+flatpak-purge-timestamp=int64 1740328339
+
+[org/gtk/settings/file-chooser]
+date-format='regular'
+location-mode='filename-entry'
+show-hidden=false
+show-size-column=true
+show-type-column=true
+sidebar-width=157
+sort-column='name'
+sort-directories-first=false
+sort-order='ascending'
+type-format='category'
+window-position=(0, 61)
+window-size=(1231, 902)
