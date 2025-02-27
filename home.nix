@@ -16,6 +16,9 @@
     flatpak gnome-software zig ghostty bitwarden-desktop google-chrome cheese
     gnomeExtensions.dash-to-dock
 
+    prismlauncher #https://wiki.nixos.org/wiki/Prism_Launcher#Advanced
+    spotify discord
+
     (vscode-with-extensions.override {
       vscodeExtensions = with vscode-extensions; [
         dracula-theme.theme-dracula
