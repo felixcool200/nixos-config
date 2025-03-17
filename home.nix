@@ -30,19 +30,17 @@
     })
   ];
 
-  programs.firefox = {
+  programs.chromium = {
     enable = true;
-    package = pkgs.firefox;
-
-    # Install extensions for the current user
-    profiles.default = {
-      id = 0;
-      extensions.packages = with pkgs.nur.repos.rycee.firefox-addons or {}; [
-        ublock-origin
-        bitwarden
-      ];
-    };
-  };
+    package = pkgs.brave;
+    extensions = [
+      { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # ublock origin
+      { id = "nngceckbapebfimnlniiiahkandclblb"; } # bitwarden
+    ];
+    #commandLineArgs = [
+    #  "--disable-features=WebRtcAllowInputVolumeAdjustment"
+    #];
+  }
 
   #  custom-shader = ${toString ./ghostty/ghostty-shaders/starfield.glsl}
   home.file.".config/ghostty/config".text = ''
