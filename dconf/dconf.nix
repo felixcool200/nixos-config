@@ -95,6 +95,10 @@ with lib.hm.gvariant;
       application-id = "bitwarden.desktop";
     };
 
+    "org/gnome/desktop/notifications/application/discord" = {
+      application-id = "discord.desktop";
+    };
+
     "org/gnome/desktop/notifications/application/firefox" = {
       application-id = "firefox.desktop";
     };
@@ -145,6 +149,20 @@ with lib.hm.gvariant;
       window-width = 600;
     };
 
+    "org/gnome/gnome-system-monitor" = {
+      current-tab = "resources";
+      maximized = false;
+      show-dependencies = false;
+      show-whose-processes = "user";
+      window-height = 720;
+      window-width = 1354;
+    };
+
+    "org/gnome/gnome-system-monitor/proctree" = {
+      col-26-visible = false;
+      col-26-width = 0;
+    };
+
     "org/gnome/nautilus/preferences" = {
       default-folder-viewer = "icon-view";
       migrated-gtk-settings = true;
@@ -163,7 +181,7 @@ with lib.hm.gvariant;
       disable-user-extensions = false;
       disabled-extensions = [ "auto-move-windows@gnome-shell-extensions.gcampax.github.com" "launch-new-instance@gnome-shell-extensions.gcampax.github.com" "light-style@gnome-shell-extensions.gcampax.github.com" "native-window-placement@gnome-shell-extensions.gcampax.github.com" "places-menu@gnome-shell-extensions.gcampax.github.com" "screenshot-window-sizer@gnome-shell-extensions.gcampax.github.com" "status-icons@gnome-shell-extensions.gcampax.github.com" "user-theme@gnome-shell-extensions.gcampax.github.com" "window-list@gnome-shell-extensions.gcampax.github.com" "windowsNavigator@gnome-shell-extensions.gcampax.github.com" ];
       enabled-extensions = [ "apps-menu@gnome-shell-extensions.gcampax.github.com" "system-monitor@gnome-shell-extensions.gcampax.github.com" "workspace-indicator@gnome-shell-extensions.gcampax.github.com" "dash-to-dock@micxgx.gmail.com" ];
-      favorite-apps = [ "firefox.desktop" "org.gnome.Nautilus.desktop" "com.mitchellh.ghostty.desktop" ];
+      favorite-apps = [ "brave-browser.desktop" "org.gnome.Nautilus.desktop" "com.mitchellh.ghostty.desktop" ];
       welcome-dialog-last-shown-version = "47.2";
     };
 
