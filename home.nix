@@ -40,7 +40,7 @@
     #commandLineArgs = [
     #  "--disable-features=WebRtcAllowInputVolumeAdjustment"
     #];
-  }
+  };
 
   #  custom-shader = ${toString ./ghostty/ghostty-shaders/starfield.glsl}
   home.file.".config/ghostty/config".text = ''
