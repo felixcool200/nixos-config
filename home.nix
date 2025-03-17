@@ -5,6 +5,8 @@
   # Import dconf settings from an external file
   imports = [
     ./dconf/dconf.nix
+    ./apps/neovim.nix
+    ./apps/tmux.nix
   ];
 
   home.username = "felixcool200";
@@ -15,10 +17,16 @@
   home.packages = with pkgs; [
     flatpak gnome-software zig ghostty bitwarden-desktop google-chrome cheese
     gnomeExtensions.dash-to-dock
-
+    
     prismlauncher #https://wiki.nixos.org/wiki/Prism_Launcher#Advanced
     spotify discord
 
+    gnumake gcc ripgrep unzip xclip
+
+    # Syncthing to sync folders
+    syncthing
+
+    # VSCode
     (vscode-with-extensions.override {
       vscodeExtensions = with vscode-extensions; [
         dracula-theme.theme-dracula
@@ -30,6 +38,7 @@
     })
   ];
 
+  # Brave Browser
   programs.chromium = {
     enable = true;
     package = pkgs.brave;
@@ -46,6 +55,16 @@
   home.file.".config/ghostty/config".text = ''
     config-file = ${toString ./ghostty/config}
   '';
+
+  # Vim config
+  programs.vim = {
+    enable = true;
+    settings = {
+      tabstop = 4;      # Set tab width to 4 spaces
+      shiftwidth = 4;   # Indentation width to 4 spaces
+      expandtab = true; # Convert tabs to spaces
+    };
+  };
 
   # Set environment variables
   home.sessionVariables = {
