@@ -14,9 +14,19 @@
   home.stateVersion = "24.11";
 
   home.packages = with pkgs; [
-    flatpak gnome-software zig ghostty bitwarden-desktop google-chrome cheese
-    gnomeExtensions.dash-to-dock
 
+    # Installing extra software outside of configuration.
+    flatpak gnome-software
+
+    # Terminal
+    ghostty
+    
+    # Programming
+    zig
+    
+    # Extra apps
+    bitwarden-desktop google-chrome cheese
+    gnomeExtensions.dash-to-dock
     prismlauncher #https://wiki.nixos.org/wiki/Prism_Launcher#Advanced
     spotify discord
 
@@ -68,8 +78,8 @@
   # Set environment variables
   home.sessionVariables = {
     TERMINAL = "ghostty";
-    VISUAL = "vim";
-    EDITOR = "vim";
+    VISUAL = "nvim";
+    EDITOR = "nvim";
   };
 
   # Create aliases

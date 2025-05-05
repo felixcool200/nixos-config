@@ -10,6 +10,15 @@
     # LSP
     lua-language-server
     llvmPackages.clang-tools
+ 
+    # Extra packages for config
+    #luajit
+    #luajitPackages.luarocks
+    lua5_1
+    lua51Packages.luarocks
+    tree-sitter
+    nodejs # Optional: for some treesitter grammars
+    fd # Optional: for Telescope warnings
   ];
 
   # Install Neovim
