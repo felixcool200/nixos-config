@@ -134,6 +134,9 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
+-- Move to another buffer when closing
+vim.keymap.set("n", "<C-c>", "<cmd>Bdelete<CR>", { desc = "Close buffer" })
+
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup({
   -- Detect tabstop and shiftwidth automatically
@@ -178,6 +181,12 @@ require('lazy').setup({
     },
   },
 
+
+  -- Handle closing buffers in a good way.
+  {
+    "moll/vim-bbye",
+    lazy = false, -- load immediately since it's tiny and used often
+  },
   -- Show buffers over screen similar to VSCode
   {
     "akinsho/bufferline.nvim",
@@ -186,6 +195,8 @@ require('lazy').setup({
     lazy = false,
     opts = {
       options = {
+        close_command = "Bdelete! %d",
+        right_mouse_command = "Bdelete! %d",
         mode = "buffers", -- show buffer tabs, not tab pages
         diagnostics = "nvim_lsp",
         separator_style = "slant",
