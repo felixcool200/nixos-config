@@ -6,12 +6,13 @@
     ./dconf/dconf.nix
     ./apps/neovim.nix
     ./apps/tmux.nix
+    ./home_manager/hyprland.nix
   ];
 
   home.username = "felixcool200";
   home.homeDirectory = "/home/felixcool200";
 
-  home.stateVersion = "24.11";
+  home.stateVersion = "24.05";
 
   home.packages = with pkgs; [
 
@@ -77,9 +78,9 @@
 
   # Set environment variables
   home.sessionVariables = {
-    TERMINAL = "ghostty";
+    #TERMINAL = "ghostty";
     VISUAL = "nvim";
-    EDITOR = "nvim";
+    #EDITOR = "nvim";
   };
 
   # Create aliases

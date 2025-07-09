@@ -10,6 +10,9 @@
     # LSP
     lua-language-server
     llvmPackages.clang-tools
+    pyright
+    nil
+    rustup
  
     # Extra packages for config
     #luajit

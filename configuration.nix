@@ -7,7 +7,11 @@
   nixpkgs.config.allowUnfree = true;
  
    imports =
-    [ /etc/nixos/hardware-configuration.nix ];
+    [ 
+      /etc/nixos/hardware-configuration.nix
+      ./hyprland.nix
+      #./gnome.nix
+    ];
 
   # Bootloader
   boot.loader.systemd-boot.enable = true;
@@ -45,27 +49,12 @@
     '';
   };
 
-  # X11 and GNOME
-  services.xserver.enable = true;
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-  services.xserver.xkb.layout = "se";
 
   # Console keymap
   console.keyMap = "sv-latin1";
 
   # Enable printing
   services.printing.enable = true;
-
-  # Enable sound with PipeWire
-  services.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
 
   # Enable touchpad support
   services.libinput.enable = true;
@@ -80,21 +69,12 @@
   # Allow Wireshark to capture traffic
   programs.wireshark.enable = true;
 
-  # Remove unwanted GNOME packages
-  environment.gnome.excludePackages = with pkgs; [
-    simple-scan totem yelp geary seahorse
-    gnome-text-editor gnome-tour gnome-calculator gnome-calendar
-    gnome-characters gnome-clocks gnome-contacts gnome-font-viewer
-    gnome-logs gnome-maps gnome-music gnome-weather
-    gnome-disk-utility pkgs.gnome-connections
-  ];
-
   # System-wide packages
   environment.systemPackages = with pkgs; [
     vim wget htop wireshark git
   ];
 
   # Set the system state version
-  system.stateVersion = "24.11";
+  system.stateVersion = "24.05";
 }
 
