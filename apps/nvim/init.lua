@@ -619,7 +619,7 @@ require('lazy').setup({
         pyright = {},
         rust_analyzer = {},
         -- Nix LSP
-        ['nil'] = {},
+        nil_ls = {},
         -- ... etc. See :help lspconfig-all for a list of all the pre-configured LSPs
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
@@ -870,6 +870,17 @@ require('lazy').setup({
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
       vim.cmd.colorscheme 'tokyonight-night'
     end,
+  },
+
+
+  {
+    "greggh/claude-code.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim", -- Required for git operations
+    },
+    config = function()
+      require("claude-code").setup()
+    end
   },
 
   -- Highlight todo, notes, etc in comments

@@ -1,7 +1,15 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
-
+  # Import dconf settings from an external file
+  imports = [
+    ./dconf/dconf.nix
+  ];
 
   # X11 and GNOME
   services.xserver.enable = true;
@@ -9,14 +17,27 @@
   services.xserver.desktopManager.gnome.enable = true;
   services.xserver.xkb.layout = "se";
 
-
   # Remove unwanted GNOME packages
   environment.gnome.excludePackages = with pkgs; [
-    simple-scan totem yelp geary seahorse
-    gnome-text-editor gnome-tour gnome-calculator gnome-calendar
-   gnome-characters gnome-clocks gnome-contacts gnome-font-viewer
-    gnome-logs gnome-maps gnome-music gnome-weather
-    gnome-disk-utility pkgs.gnome-connections
+    simple-scan
+    totem
+    yelp
+    geary
+    seahorse
+    gnome-text-editor
+    gnome-tour
+    gnome-calculator
+    gnome-calendar
+    gnome-characters
+    gnome-clocks
+    gnome-contacts
+    gnome-font-viewer
+    gnome-logs
+    gnome-maps
+    gnome-music
+    gnome-weather
+    gnome-disk-utility
+    pkgs.gnome-connections
   ];
 
   # Enable sound with PipeWire

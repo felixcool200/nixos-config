@@ -8,7 +8,7 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";  # Keep same nixpkgs version
   };
 
-  outputs = { self, nixpkgs, home-manager, nur, ... }:
+  outputs = { nixpkgs, home-manager, nur, ... }:
   let
     system = "x86_64-linux";
     pkgs = import nixpkgs { inherit system; config.allowUnfree = true; };

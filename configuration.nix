@@ -1,17 +1,19 @@
-{ config, pkgs, lib, ... }:
+{ pkgs, ... }:
 
 {
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   nixpkgs.config.allowUnfree = true;
- 
-   imports =
-    [ 
-      /etc/nixos/hardware-configuration.nix
-      ./hyprland.nix
-      #./gnome.nix
-    ];
+
+  imports = [
+    /etc/nixos/hardware-configuration.nix
+    ./hyprland/conf.nix
+    #./gnome/conf.nix
+  ];
 
   # Bootloader
   boot.loader.systemd-boot.enable = true;
@@ -19,7 +21,7 @@
   #boot.loader.grub.enable = true;
   #boot.loader.grub.device = "/dev/vda";
   #boot.loader.grub.useOSProber = true;
-  
+
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
 
@@ -49,7 +51,6 @@
     '';
   };
 
-
   # Console keymap
   console.keyMap = "sv-latin1";
 
@@ -63,7 +64,11 @@
   users.users.felixcool200 = {
     isNormalUser = true;
     description = "Felix Söderman";
-    extraGroups = [ "networkmanager" "wheel" "wireshark" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "wireshark"
+    ];
   };
 
   # Allow Wireshark to capture traffic
@@ -71,10 +76,13 @@
 
   # System-wide packages
   environment.systemPackages = with pkgs; [
-    vim wget htop wireshark git
+    vim
+    wget
+    htop
+    wireshark
+    git
   ];
 
   # Set the system state version
-  system.stateVersion = "24.05";
+  system.stateVersion = "25.05";
 }
-

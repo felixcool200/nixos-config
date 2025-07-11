@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ pkgs, lib, ... }:
 
 {
   # Nerd font for nvim config
@@ -13,7 +13,11 @@
     pyright
     nil
     rustup
- 
+
+    # AI
+    #gemini-cli
+    claude-code
+
     # Extra packages for config
     #luajit
     #luajitPackages.luarocks
@@ -22,6 +26,7 @@
     tree-sitter
     nodejs # Optional: for some treesitter grammars
     fd # Optional: for Telescope warnings
+
   ];
 
   # Install Neovim
@@ -31,11 +36,10 @@
 
     # Set Neovim to use the Lua config file
     #extraConfig = lib.fileContents ./neovim.lua;
-    extraLuaConfig = lib.fileContents ./neovim.lua;
+    extraLuaConfig = lib.fileContents ./init.lua;
     # Install necessary LSP servers and tools
     #extraPackages = with pkgs; [
     #  llvmPackages.clang-unwrapped
     #];
   };
 }
-
