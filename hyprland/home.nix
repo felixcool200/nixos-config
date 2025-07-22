@@ -4,6 +4,7 @@
     ./hyprpaper/home.nix
     ./waybar/home.nix
     ./wofi/home.nix
+    ./gtk/home.nix
   ];
 
   programs.kitty.enable = true; # required for the default Hyprland config
@@ -82,6 +83,7 @@
     exec-once = [
       "waybar"
       "hypridle"
+      "sleep 2 && nm-applet --indicator"
     ];
 
     bind =

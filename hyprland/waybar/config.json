@@ -11,6 +11,7 @@
     "hyprland/window"
   ],
   "modules-right": [
+    "network",
     "tray",
     "hyprland/language",
     "custom/weather",
@@ -36,7 +37,9 @@
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
   },
   "tray": {
-    "spacing": 4
+    "spacing": 4,
+    "icon-size": 16,
+    "show-passive-items": true
   },
   "custom/weather": {
     "exec": "~/.config/waybar/wittr.sh",
@@ -46,8 +49,17 @@
     "interval": 900
   },
   "hyprland/language": {
-    "format-pl": "[pl]",
+    "format-se": "[se]",
     "format-en": "[us]",
     "on-click": "hyprctl switchxkblayout at-translated-set-2-keyboard next"
+  },
+  "network": {
+    "interval": 1,
+    "format-wifi": "Wi-Fi: {signalStrength}% ",
+    "format-ethernet": " Wired {bandwidthDownBytes}/{bandwidthUpBytes}",
+    "format-disconnected": "⚠ Disconnected",
+    "tooltip-format": "{ifname}: {ipaddr}/{cidr}",
+    "tooltip-format-wifi": "{essid} {frequency} ({signalStrength}%): {ipaddr}/{cidr}",
+    "on-click": "nm-connection-editor"
   }
 }

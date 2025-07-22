@@ -24,6 +24,9 @@
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   };
 
+  # Ensure polkit is available for nm-applet
+  security.polkit.enable = true;
+
   # Enable sound with pipewire.
   security.rtkit.enable = true;
   services.pipewire = {
@@ -42,6 +45,9 @@
     # Notifications
     dunst
     libnotify
+
+    # Network management
+    networkmanagerapplet
   ];
 
 }
