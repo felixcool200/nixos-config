@@ -4,7 +4,7 @@
   "height": 24,
   "spacing": 4,
   "modules-left": [
-    "wlr/workspaces",
+    "hyprland/workspaces",
     "wlr/taskbar"
   ],
   "modules-center": [
@@ -23,7 +23,7 @@
       "foot"
     ]
   },
-  "wlr/workspaces": {
+  "hyprland/workspaces": {
     "on-click": "activate",
     "on-scroll-up": "hyprctl dispatch workspace e-1",
     "on-scroll-down": "hyprctl dispatch workspace e+1"

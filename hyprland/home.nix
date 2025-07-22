@@ -1,32 +1,13 @@
-{ pkgs, ... }:
-
 {
-  # Waybar configuration
-  programs.waybar = {
-    enable = true;
-    settings = {
-      mainBar = builtins.fromJSON (builtins.readFile ./waybar/config.json);
-    };
-    style = builtins.readFile ./waybar/style.css;
-  };
-
-  # Install the wittr.sh script
-  home.file.".config/waybar/wittr.sh" = {
-    source = ./waybar/wittr.sh;
-    executable = true;
-  };
-
-  # Wofi configuration
-  programs.wofi = {
-    enable = true;
-    style = builtins.readFile ./wofi/style.css;
-  };
+  imports = [
+    ./hyprlock/home.nix
+    ./hyprpaper/home.nix
+    ./waybar/home.nix
+    ./wofi/home.nix
+  ];
 
   programs.kitty.enable = true; # required for the default Hyprland config
   wayland.windowManager.hyprland.enable = true; # enable Hyprland
-
-  programs.hyprlock.enable = true;
-  services.hypridle.enable = true;
 
   home.sessionVariables = {
     TERMINAL = "kitty";
@@ -55,9 +36,52 @@
 
     "$mod" = "SUPER";
 
+    # Dracula theme configuration
+    general = {
+      "col.active_border" = "rgb(44475a) rgb(bd93f9) 90deg";
+      "col.inactive_border" = "rgba(44475aaa)";
+      "col.nogroup_border" = "rgba(282a36dd)";
+      "col.nogroup_border_active" = "rgb(bd93f9) rgb(44475a) 90deg";
+      no_border_on_floating = false;
+      border_size = 2;
+    };
+
+    decoration = {
+      rounding = 10;
+      rounding_power = 4.0;
+      active_opacity = "0.9";
+      inactive_opacity = "0.6";
+      # TODO: Add a nice screen shader
+      # screen_shader = ""; # See github.com/hyprwm/Hyprland/blob/main/example/screenShader.frag
+      shadow = {
+        enabled = true;
+        range = 4;
+        color = "rgba(1E202966)";
+        render_power = 2;
+        scale = 0.97;
+      };
+    };
+
+    group = {
+      groupbar = {
+        "col.active" = "rgb(bd93f9) rgb(44475a) 90deg";
+        "col.inactive" = "rgba(282a36dd)";
+      };
+    };
+
+    misc = {
+      disable_hyprland_logo = true;
+    };
+
+    # Window rules
+    windowrulev2 = [
+      "bordercolor rgb(ff5555),xwayland:1" # check if window is xwayland
+    ];
+
     # Autostart applications
     exec-once = [
       "waybar"
+      "hypridle"
     ];
 
     bind =
@@ -103,8 +127,13 @@
         # Applications
         "$mod, F, exec, brave"
         "$mod, return, exec, kitty"
-        "$mod, S, exec, wofi --show drun"
         ", Print, exec, grimblast copy area"
+
+        # Lock screen
+
+        # Workspace navigation with Ctrl+Alt+Arrow
+        "CTRL ALT, left, workspace, -1"
+        "CTRL ALT, right, workspace, +1"
       ]
       ++ (
         # workspaces

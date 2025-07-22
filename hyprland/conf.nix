@@ -1,6 +1,9 @@
 { pkgs, ... }:
 
 {
+  imports = [
+    ./greetd/conf.nix
+  ];
 
   # Enabling hyprlnd on NixOS
   programs.hyprland = {
@@ -15,9 +18,6 @@
     WLR_NO_HARDWARE_CURSORS = "1"; # if needed
     NIXOS_OZONE_WL = "1";
   };
-
-  services.displayManager.sddm.enable = true;
-  services.xserver.enable = true;
 
   xdg.portal = {
     enable = true;
@@ -36,12 +36,10 @@
 
   # Optional system packages
   environment.systemPackages = with pkgs; [
-    waybar
-    hyprlock
-    wofi
-    kitty
-    wl-clipboard
-    xdg-desktop-portal-hyprland
+    kitty # Default terminal
+    wl-clipboard # Clipboard utility
+
+    # Notifications
     dunst
     libnotify
   ];
