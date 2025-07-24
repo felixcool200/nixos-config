@@ -100,6 +100,7 @@
       gs = "git status";
       rebuildOS = "nixos-rebuild --flake ~/Documents/nixos-config switch --impure --sudo";
       cleanOS = "sudo nix-env --delete-generations +5 --profile /nix/var/nix/profiles/system && nix-env --delete-generations +5 && sudo nix-collect-garbage && nix-collect-garbage";
+      upgradeOS = "nix flake update ~/Documents/nixos-config && nixos-rebuild --flake ~/Documents/nixos-config switch --impure --sudo";
     };
   };
 

@@ -5,6 +5,8 @@
     ./waybar/home.nix
     ./wofi/home.nix
     ./gtk/home.nix
+    ./wlogout/home.nix
+    ./swaync/home.nix
   ];
 
   programs.kitty.enable = true; # required for the default Hyprland config
@@ -37,6 +39,12 @@
 
     "$mod" = "SUPER";
 
+    # Cursor configuration
+    env = [
+      "HYPRCURSOR_THEME,Bibata-Modern-Classic"
+      "HYPRCURSOR_SIZE,24"
+    ];
+
     # Dracula theme configuration
     general = {
       "col.active_border" = "rgb(44475a) rgb(bd93f9) 90deg";
@@ -45,6 +53,8 @@
       "col.nogroup_border_active" = "rgb(bd93f9) rgb(44475a) 90deg";
       no_border_on_floating = false;
       border_size = 2;
+      gaps_in = 3; # Default 5
+      gaps_out = 6; # Default 10
     };
 
     decoration = {
@@ -84,6 +94,7 @@
       "waybar"
       "hypridle"
       "sleep 2 && nm-applet --indicator"
+      "hyprctl setcursor Bibata-Modern-Classic 24"
     ];
 
     bind =
@@ -130,6 +141,16 @@
         "$mod, F, exec, brave"
         "$mod, return, exec, kitty"
         ", Print, exec, grimblast copy area"
+
+        # Audio controls
+        ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
+        ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+        ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+        ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+
+        # Clipboard controls
+        #"CTRL, C, exec, wl-copy"
+        #"CTRL, V, exec, wl-paste"
 
         # Lock screen
 

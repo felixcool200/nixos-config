@@ -16,8 +16,8 @@
     };
     
     cursorTheme = {
-      name = "Dracula-cursors";
-      package = pkgs.dracula-theme;
+      name = "Bibata-Modern-Classic";
+      package = pkgs.bibata-cursors;
       size = 24;
     };
     

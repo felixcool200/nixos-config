@@ -37,17 +37,26 @@
     jack.enable = true;
   };
 
+  # Enable Bluetooth
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
+
   # Optional system packages
   environment.systemPackages = with pkgs; [
     kitty # Default terminal
     wl-clipboard # Clipboard utility
 
     # Notifications
-    dunst
     libnotify
 
     # Network management
     networkmanagerapplet
+    
+    # Audio control
+    pavucontrol
+    
+    # Night light / blue light filter
+    gammastep
   ];
 
 }

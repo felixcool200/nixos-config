@@ -1,0 +1,13 @@
+Shader Credits
+===============
+
+These shaders are from the hyprshade project by loqusion:
+Repository: https://github.com/loqusion/hyprshade
+License: MIT
+
+Original shaders downloaded from:
+https://github.com/loqusion/hyprshade/tree/main/shaders
+
+Some shaders have been adapted from Mustache templates to work directly with Hyprland.
+
+Individual shader credits are included in the respective shader files.

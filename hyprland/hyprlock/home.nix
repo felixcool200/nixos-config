@@ -1,13 +1,32 @@
+# Hyprlock configuration - Dracula themed
+let
+  colors = import ../colors.nix;
+in
 {
-  # Hyprlock configuration - Dracula themed
   programs.hyprlock = {
     enable = true;
     settings = {
       general = {
         disable_loading_bar = true;
-        grace = 5;
+        grace = 1;
         hide_cursor = true;
         no_fade_in = false;
+      };
+
+      # Smooth animations with bezier curves
+      animations = {
+        enabled = true;
+        bezier = [
+          "easeOutQuint, 0.23, 1, 0.32, 1"
+          "easeInOutCubic, 0.65, 0.05, 0.36, 1"
+          "linear, 0, 0, 1, 1"
+        ];
+        animation = [
+          "fadeIn, 1, 3, easeOutQuint"
+          "fadeOut, 1, 3, easeInOutCubic"
+          "inputFieldDots, 1, 2, easeInOutCubic"
+          "inputFieldColors, 1, 1, easeInOutCubic"
+        ];
       };
 
       background = [
@@ -15,9 +34,10 @@
           # Using solid color instead of screenshot to avoid crash
           # path = "screenshot";
           path = "";
-          color = "rgb(40, 42, 54)"; # Dracula background color
-          blur_passes = 3;
-          blur_size = 8;
+          color = "rgb(${colors.backgroundRgb})";
+          blur_passes = 10; # 1 - 10 lower = faster
+          blur_size = 20; # 1 - 20 lower = faster
+
         }
       ];
 
@@ -28,19 +48,21 @@
           monitor = "";
           dots_center = true;
           fade_on_empty = false;
-          font_color = "rgb(f8f8f2)";
-          inner_color = "rgb(282a36)";
-          outer_color = "rgb(bd93f9)";
+          font_color = "rgb(${colors.foregroundRgb})";
+          inner_color = "rgb(${colors.backgroundRgb})";
+          outer_color = "rgb(${colors.purpleRgb})";
           outline_thickness = 5;
-          placeholder_text = "<span foreground='##f8f8f2'>Password...</span>";
-          shadow_passes = 2;
+          placeholder_text = "<span foreground=#'" + colors.foreground + "'>Password...</span>";
+          shadow_passes = 2; # 0 -
+          fail_timeout = 100; # milliseconds (default: 2000)
+          fail_transition = 15; # milliseconds (default: 300)
         }
       ];
 
       label = [
         {
           text = "$TIME";
-          color = "rgb(f8f8f2)";
+          color = "rgb(${colors.foregroundRgb})";
           font_size = 55;
           font_family = "Monospace";
           position = "0, 80";
@@ -49,7 +71,7 @@
         }
         {
           text = "Hi there, $USER";
-          color = "rgb(bd93f9)";
+          color = "rgb(${colors.purpleRgb})";
           font_size = 20;
           font_family = "Monospace";
           position = "0, 0";

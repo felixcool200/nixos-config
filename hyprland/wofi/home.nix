@@ -1,8 +1,18 @@
+# Wofi configuration
+let
+  colors = import ../colors.nix;
+in
 {
-  # Wofi configuration
   programs.wofi = {
     enable = true;
-    style = builtins.readFile ./style.css;
+    style = ''
+      @define-color background ${colors.background};
+      @define-color currentLine ${colors.currentLine};
+      @define-color foreground ${colors.foreground};
+      @define-color purple ${colors.purple};
+
+      ${builtins.readFile ./style.css}
+    '';
   };
 
   wayland.windowManager.hyprland.settings = {
