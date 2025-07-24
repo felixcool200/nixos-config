@@ -62,8 +62,6 @@
       rounding_power = 4.0;
       active_opacity = "0.9";
       inactive_opacity = "0.6";
-      # TODO: Add a nice screen shader
-      # screen_shader = ""; # See github.com/hyprwm/Hyprland/blob/main/example/screenShader.frag
       shadow = {
         enabled = true;
         range = 4;

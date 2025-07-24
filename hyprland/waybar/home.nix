@@ -137,23 +137,23 @@ in
         "custom/nightlight" = {
           format = "{}";
           exec = pkgs.writeShellScript "nightlight-status" ''
-            # Check if night mode file exists
-            if [ -f /tmp/hypr_night_mode ]; then
-              echo "🌙"  # Night mode
+            # Check if screen shader is active using hyprctl
+            shader_path=$(hyprctl getoption decoration:screen_shader | grep "str:" | cut -d' ' -f2-)
+            if [ "$shader_path" != "[[EMPTY]]" ] && [ -n "$shader_path" ]; then
+              echo "🌙"  # Night mode (shader active)
             else
-              echo "☀️"  # Day mode
+              echo "☀️"  # Day mode (no shader)
             fi
           '';
           on-click = pkgs.writeShellScript "nightlight-toggle" ''
             # Toggle between normal and night mode using blue light shader
-            if [ -f /tmp/hypr_night_mode ]; then
+            shader_path=$(hyprctl getoption decoration:screen_shader | grep "str:" | cut -d' ' -f2-)
+            if [ "$shader_path" != "[[EMPTY]]" ]; then
               # Switch to day mode
-              hyprctl keyword decoration:screen_shader ""
-              rm -f /tmp/hypr_night_mode
+              hyprctl keyword decoration:screen_shader "[[EMPTY]]"
             else
               # Switch to night mode - apply blue light filter shader
               hyprctl keyword decoration:screen_shader "/home/felixcool200/Documents/nixos-config/hyprland/shaders/blue-light-filter.glsl"
-              touch /tmp/hypr_night_mode
             fi
           '';
           interval = 2;
