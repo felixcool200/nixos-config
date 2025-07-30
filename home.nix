@@ -22,13 +22,13 @@
     # Terminal
     ghostty
 
-    # Programming
-    # zig
-
     # Extra apps
     prismlauncher # https://wiki.nixos.org/wiki/Prism_Launcher#Advanced
     spotify
     discord
+
+    # Programming
+    zig
 
     gnumake
     gcc
