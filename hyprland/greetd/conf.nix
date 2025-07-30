@@ -12,7 +12,7 @@
           "--asterisks"
           "--remember"
           "--remember-user-session"
-          "--theme 'border=magenta;text=cyan;prompt=green;time=red;action=blue;button=yellow;container=black;input=red'"
+          "--theme 'time=lightmagenta;container=darkgray;border=magenta;title=magenta;greet=lightcyan;prompt=lightmagenta;input=lightgray;action=lightblue;button=yellow;text=white'"
         ];
         user = "greeter";
       };
