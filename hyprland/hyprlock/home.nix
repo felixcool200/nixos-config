@@ -52,7 +52,7 @@ in
           inner_color = "rgb(${colors.backgroundRgb})";
           outer_color = "rgb(${colors.purpleRgb})";
           outline_thickness = 5;
-          placeholder_text = "<span foreground=#'" + colors.foreground + "'>Password...</span>";
+          placeholder_text = "Password...";
           shadow_passes = 2; # 0 -
           fail_timeout = 100; # milliseconds (default: 2000)
           fail_transition = 15; # milliseconds (default: 300)
