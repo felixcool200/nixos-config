@@ -618,6 +618,8 @@ require('lazy').setup({
         -- gopls = {},
         pyright = {},
         rust_analyzer = {},
+        -- Zig
+        zls = {},
         -- Nix LSP
         nil_ls = {},
         -- ... etc. See :help lspconfig-all for a list of all the pre-configured LSPs

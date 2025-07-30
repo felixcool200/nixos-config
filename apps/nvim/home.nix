@@ -13,6 +13,7 @@
     pyright
     nil
     rustup
+    zls
 
     # AI
     #gemini-cli

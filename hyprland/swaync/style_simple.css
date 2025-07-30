@@ -1,0 +1,190 @@
+/* Simple and clean notification style with Dracula theme */
+
+* {
+  font-family: "Inter", "Noto Sans", sans-serif;
+  font-size: 14px;
+}
+
+/* Window styling */
+.notification-row {
+  outline: none;
+}
+
+.notification-row:focus,
+.notification-row:hover {
+  background: @currentLine;
+}
+
+/* Individual notifications */
+.notification {
+  background: @background;
+  border-radius: 12px;
+  margin: 6px 12px;
+  padding: 0;
+  border: 1px solid @currentLine;
+}
+
+/* Critical notifications */
+.critical {
+  border: 1px solid @red;
+}
+
+/* Notification content */
+.notification-content {
+  padding: 16px;
+  background: transparent;
+  border-radius: 12px;
+}
+
+/* App icon */
+.close-button {
+  opacity: 0.6;
+  color: @comment;
+  border-radius: 50%;
+  margin: 8px;
+  padding: 4px;
+  background: transparent;
+  transition: all 0.2s ease;
+}
+
+.close-button:hover {
+  opacity: 1;
+  background: @currentLine;
+  color: @foreground;
+}
+
+/* App name and time */
+.notification-default-action {
+  padding: 0;
+  border-radius: 12px;
+}
+
+.notification-default-action:hover {
+  background: rgba(68, 71, 90, 0.5);
+}
+
+/* Icons */
+.notification-icon {
+  margin: 16px;
+  min-width: 48px;
+  min-height: 48px;
+}
+
+/* App name */
+.app-name {
+  color: @purple;
+  font-weight: 600;
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+
+/* Summary (title) */
+.summary {
+  color: @foreground;
+  font-weight: 500;
+  font-size: 15px;
+  margin-bottom: 6px;
+}
+
+/* Body text */
+.body {
+  color: @comment;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* Time */
+.time {
+  color: @comment;
+  font-size: 12px;
+  font-weight: 400;
+  margin-right: 16px;
+}
+
+/* Control Center */
+.control-center {
+  background: @background;
+  border-radius: 16px;
+  margin: 10px;
+  padding: 12px;
+  border: 1px solid @currentLine;
+}
+
+/* Title widget */
+.widget-title {
+  color: @foreground;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 12px 16px 16px 16px;
+}
+
+.widget-title > button {
+  background: transparent;
+  border: 1px solid @currentLine;
+  border-radius: 8px;
+  color: @comment;
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.widget-title > button:hover {
+  background: @currentLine;
+  border-color: @purple;
+  color: @foreground;
+}
+
+/* Scrollbar */
+scrollbar,
+scrollbar * {
+  border: none;
+}
+
+scrollbar.vertical slider {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  min-width: 6px;
+}
+
+scrollbar.vertical slider:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+scrollbar.vertical trough {
+  background: transparent;
+  border-radius: 8px;
+  min-width: 6px;
+}
+
+/* Blank notifications */
+.blank-window {
+  background: transparent;
+}
+
+/* No notifications message */
+.notification-group-headers,
+.notification-group-header {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 16px;
+  font-weight: 600;
+  margin: 20px 0;
+  text-align: center;
+}
+
+/* Animation */
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.notification {
+  animation: slideIn 0.2s ease-out;
+}

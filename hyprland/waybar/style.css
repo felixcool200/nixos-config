@@ -68,7 +68,6 @@
           padding: 0 8px;
           background: @background;
           color: @foreground;
-          font-family: "NotoSansMono Nerd Font";
       }
 
       #network {

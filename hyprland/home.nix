@@ -6,7 +6,7 @@
     ./wofi/home.nix
     ./gtk/home.nix
     ./wlogout/home.nix
-    ./swaync/home.nix
+    ./swaync/home_simple.nix
   ];
 
   programs.kitty.enable = true; # required for the default Hyprland config
