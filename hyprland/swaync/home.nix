@@ -85,7 +85,7 @@ in
       @define-color red ${colors.red};
       @define-color yellow ${colors.yellow};
 
-      ${builtins.readFile ./style_simple.css}
+      ${builtins.readFile ./style.css}
     '';
   };
 
@@ -95,4 +95,3 @@ in
     libnotify
   ];
 }
-
