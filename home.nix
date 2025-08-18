@@ -3,8 +3,7 @@
 {
   # Import dconf settings from an external file
   imports = [
-    ./apps/nvim/home.nix
-    ./apps/tmux/home.nix
+    ./apps/home.nix
     ./hyprland/home.nix
   ];
 
@@ -20,15 +19,12 @@
     #gnome-software
 
     # Terminal
-    ghostty
 
     # Extra apps
-    prismlauncher # https://wiki.nixos.org/wiki/Prism_Launcher#Advanced
-    spotify
-    discord
+    #prismlauncher # https://wiki.nixos.org/wiki/Prism_Launcher#Advanced
 
     # Programming
-    zig
+    #zig
 
     gnumake
     gcc
@@ -40,54 +36,13 @@
     # Syncthing to sync folders
     # syncthing
 
-    # VSCode
-    (vscode-with-extensions.override {
-      vscodeExtensions = with vscode-extensions; [
-        dracula-theme.theme-dracula
-        bbenoist.nix
-        ms-python.python
-        ms-vscode.cpptools
-        ziglang.vscode-zig
-      ];
-    })
   ];
 
-  # Brave Browser
-  programs.chromium = {
-    enable = true;
-    package = pkgs.brave;
-    extensions = [
-      { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # ublock origin
-      { id = "nngceckbapebfimnlniiiahkandclblb"; } # bitwarden
-    ];
-    commandLineArgs = [
-      "--disable-features=WebRtcAllowInputVolumeAdjustment"
-      "--enable-extensions"
-      "--load-extension"
-    ];
-  };
 
-  # Alternative: Install Brave directly in packages if chromium module doesn't work
-  # home.packages = with pkgs; [ brave ];
 
-  #  custom-shader = ${toString ./ghostty/ghostty-shaders/starfield.glsl}
-  home.file.".config/ghostty/config".text = ''
-    config-file = ${toString ./apps/ghostty/config}
-  '';
-
-  # Vim config
-  programs.vim = {
-    enable = true;
-    settings = {
-      tabstop = 4; # Set tab width to 4 spaces
-      shiftwidth = 4; # Indentation width to 4 spaces
-      expandtab = true; # Convert tabs to spaces
-    };
-  };
 
   # Set environment variables
   home.sessionVariables = {
-    #TERMINAL = "ghostty";
     VISUAL = "nvim";
     #EDITOR = "nvim";
   };
