@@ -2,6 +2,8 @@
 
 {
   imports = [
+    ./bash/home.nix
+    ./git/home.nix
     ./fonts/home.nix
     ./lsp/home.nix
     ./ai/home.nix
