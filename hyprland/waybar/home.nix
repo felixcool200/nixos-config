@@ -4,14 +4,19 @@ let
 in
 
 {
+  home.packages = [ pkgs.inter ];
+
   programs.waybar = {
     enable = true;
     settings = {
       mainBar = {
         layer = "top";
         position = "top";
-        height = 24;
+        height = 38;
         spacing = 4;
+        margin-top = 6;
+        margin-left = 10;
+        margin-right = 10;
         modules-left = [
           "hyprland/workspaces"
           "wlr/taskbar"
@@ -50,18 +55,19 @@ in
         };
 
         clock = {
-          format = "{:%Y-%m-%d %H:%M:%S}";
-          tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
+          format = "{:%Y-%m-%d  %H:%M:%S}";
+          tooltip = true;
+          tooltip-format = "<big><b>{:%A %B %d, %Y}</b></big>\n\n<tt>{calendar}</tt>";
           calendar = {
             mode = "month";
             weeks-pos = "right";
             on-scroll = 1;
             format = {
-              months = "<span color='#f8f8f2' size='x-large'><b>{}</b></span>";
-              days = "<span color='#6272a4' size='large'>{}</span>";
-              weeks = "<span color='#8be9fd' size='large'><b>W{}</b></span>";
-              weekdays = "<span color='#bd93f9' size='large'><b>{}</b></span>";
-              today = "<span color='#ff79c6' size='x-large'><b><u>{}</u></b></span>";
+              months = "<span color='${colors.purple}' size='large'><b>{}</b></span>";
+              days = "<span color='${colors.comment}'>{}</span>";
+              weeks = "<span color='${colors.cyan}'><b>W{}</b></span>";
+              weekdays = "<span color='${colors.foreground}'><b>{}</b></span>";
+              today = "<span color='${colors.pink}'><b><u>{}</u></b></span>";
             };
           };
           actions = {
@@ -83,7 +89,7 @@ in
             req=$(${pkgs.coreutils}/bin/timeout 10 ${pkgs.curl}/bin/curl -s "wttr.in/$LOCATION?format=%t|%l+(%c%f)+%h,+%C" 2>/dev/null)
 
             if [ $? -ne 0 ] || [ -z "$req" ]; then
-                echo '{"text":"🌐 --°", "tooltip":"Weather data unavailable"}'
+                echo '{"text":"󰖟 --°", "tooltip":"Weather data unavailable"}'
                 exit 0
             fi
 
@@ -91,9 +97,9 @@ in
             tooltip=$(echo "$req" | ${pkgs.gawk}/bin/awk -F "|" '{print $2}')
 
             if [ -n "$bar" ] && [ -n "$tooltip" ]; then
-                echo "{\"text\":\"🌤️ $bar\", \"tooltip\":\"$tooltip\"}"
+                echo "{\"text\":\"󰖙 $bar\", \"tooltip\":\"$tooltip\"}"
             else
-                echo '{"text":"🌐 --°", "tooltip":"Weather data unavailable"}'
+                echo '{"text":"󰖟 --°", "tooltip":"Weather data unavailable"}'
             fi
           '';
           return-type = "json";
@@ -138,9 +144,9 @@ in
           format = "{}";
           exec = pkgs.writeShellScript "nightlight-status" ''
             if ${pkgs.procps}/bin/pgrep -x hyprsunset > /dev/null; then
-              echo "🌙"
+              echo "󰖔"
             else
-              echo "☀️"
+              echo "󰖙"
             fi
           '';
           on-click = pkgs.writeShellScript "nightlight-toggle" ''
@@ -156,7 +162,7 @@ in
         };
 
         "custom/power" = {
-          format = "⏻";
+          format = "󰐥";
           on-click = "wlogout";
           tooltip = false;
         };
@@ -165,14 +171,14 @@ in
           tooltip = false;
           format = "{icon}";
           format-icons = {
-            notification = "🔔";
-            none = "🔔";
-            dnd-notification = "🔕";
-            dnd-none = "🔕";
-            inhibited-notification = "🔔";
-            inhibited-none = "🔔";
-            dnd-inhibited-notification = "🔕";
-            dnd-inhibited-none = "🔕";
+            notification = "󰂞";
+            none = "󰂚";
+            dnd-notification = "󰂛";
+            dnd-none = "󰂛";
+            inhibited-notification = "󰂞";
+            inhibited-none = "󰂚";
+            dnd-inhibited-notification = "󰂛";
+            dnd-inhibited-none = "󰂛";
           };
           return-type = "json";
           exec-if = "which swaync-client";

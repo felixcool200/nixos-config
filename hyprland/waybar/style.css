@@ -1,79 +1,102 @@
       * {
           border: none;
           border-radius: 0;
-          font-family: Iosevka;
+          font-family: Inter, "Iosevka Nerd Font", sans-serif;
           font-size: 11pt;
           min-height: 0;
       }
+
       window#waybar {
-          opacity: 0.9;
+          background: transparent;
+          color: @foreground;
+      }
+
+      tooltip {
+          background: @background;
+          border: 1px solid @selection;
+          border-radius: 12px;
+          padding: 12px;
+      }
+
+      tooltip label {
+          color: @foreground;
+      }
+
+      /* ===== LEFT: Workspaces ===== */
+
+      #workspaces {
           background: @background-darker;
-          color: @foreground;
-          border-bottom: 2px solid @background;
+          border-radius: 12px;
+          margin: 4px 3px;
+          padding: 0 4px;
       }
+
       #workspaces button {
-          padding: 0 10px;
-          background: @background;
-          color: @foreground;
-      }
-      #workspaces button:hover {
-          box-shadow: inherit;
-          text-shadow: inherit;
-          background-image: linear-gradient(0deg, @selection, @background-darker);
-      }
-      #workspaces button.active {
-          background-image: linear-gradient(0deg, @purple, @selection);
-      }
-      #workspaces button.urgent {
-          background-image: linear-gradient(0deg, @red, @background-darker);
-      }
-      #taskbar button.active {
-          background-image: linear-gradient(0deg, @selection, @background-darker);
-      }
-      #clock {
-          padding: 0 12px;
-          background: @background;
-          border-radius: 10px;
-          margin: 4px;
-      }
-
-      #pulseaudio {
-          padding: 0 8px;
-          background: @background;
-          color: @cyan;
-      }
-
-      #pulseaudio.muted {
+          padding: 2px 10px;
           color: @comment;
+          border-radius: 8px;
+          margin: 3px 1px;
+          background: transparent;
+          transition: all 200ms ease;
       }
 
-      #custom-nightlight {
-          padding: 0 8px;
-          background: @background;
-          color: @orange;
+      #workspaces button:hover {
+          background: @selection;
+          color: @foreground;
+          box-shadow: none;
+          text-shadow: none;
       }
 
-      #custom-power {
-          padding: 0 12px;
-          background: @red;
+      #workspaces button.active {
+          background: @purple;
           color: @background;
           font-weight: bold;
       }
 
-      #custom-power:hover {
-          background: @pink;
+      #workspaces button.urgent {
+          background: @red;
+          color: @background;
       }
 
-      #custom-notification {
-          padding: 0 8px;
-          background: @background;
-          color: @foreground;
+      /* ===== LEFT: Taskbar ===== */
+
+      #taskbar {
+          background: @background-darker;
+          border-radius: 12px;
+          margin: 4px 3px;
+          padding: 0 4px;
       }
+
+      #taskbar button {
+          border-radius: 8px;
+          padding: 2px 6px;
+          margin: 3px 1px;
+          transition: all 200ms ease;
+      }
+
+      #taskbar button.active {
+          background: @selection;
+      }
+
+      /* ===== CENTER: Clock ===== */
+
+      #clock {
+          background: @background;
+          color: @purple;
+          padding: 2px 18px;
+          border-radius: 12px;
+          margin: 4px 3px;
+      }
+
+      /* ===== RIGHT: Network + Pulseaudio island ===== */
 
       #network {
-          padding: 0 8px;
-          background: @background;
+          background: @background-darker;
           color: @green;
+          padding: 2px 10px;
+          border-radius: 12px 0 0 12px;
+          margin: 4px 0 4px 3px;
+          border-right: 1px solid @selection;
       }
 
       #network.disconnected {
@@ -82,4 +105,70 @@
 
       #network.linked {
           color: @orange;
+      }
+
+      #pulseaudio {
+          background: @background-darker;
+          color: @cyan;
+          padding: 2px 10px;
+          border-radius: 0 12px 12px 0;
+          margin: 4px 3px 4px 0;
+      }
+
+      #pulseaudio.muted {
+          color: @comment;
+      }
+
+      /* ===== RIGHT: Nightlight + Notification island ===== */
+
+      #custom-nightlight {
+          background: @background-darker;
+          color: @orange;
+          padding: 2px 8px;
+          border-radius: 12px 0 0 12px;
+          margin: 4px 0 4px 3px;
+          border-right: 1px solid @selection;
+      }
+
+      #custom-notification {
+          background: @background-darker;
+          color: @foreground;
+          padding: 2px 8px;
+          border-radius: 0 12px 12px 0;
+          margin: 4px 3px 4px 0;
+      }
+
+      /* ===== RIGHT: Tray ===== */
+
+      #tray {
+          background: @background-darker;
+          border-radius: 12px;
+          margin: 4px 3px;
+          padding: 2px 10px;
+      }
+
+      /* ===== RIGHT: Weather ===== */
+
+      #custom-weather {
+          background: @background-darker;
+          color: @foreground;
+          border-radius: 12px;
+          margin: 4px 3px;
+          padding: 2px 10px;
+      }
+
+      /* ===== RIGHT: Power button (accent pill) ===== */
+
+      #custom-power {
+          background: @red;
+          color: @background;
+          font-weight: bold;
+          border-radius: 12px;
+          padding: 0px 12px;
+          margin: 4px 6px 4px 3px;
+          transition: all 200ms ease;
+      }
+
+      #custom-power:hover {
+          background: @pink;
       }
