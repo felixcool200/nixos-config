@@ -2,11 +2,14 @@
  * Blue Light Filter
  * Source: https://github.com/loqusion/hyprshade
  * Original: https://github.com/hyprwm/Hyprland/issues/1140#issuecomment-1335128437
- * Adapted from Mustache template - using 2600K temperature and full strength
+ * Adapted for Hyprland GLSL 3.20 ES - using 2600K temperature and full strength
  */
 
+#version 320 es
 precision mediump float;
-varying vec2 v_texcoord;
+
+in vec2 v_texcoord;
+out vec4 fragColor;
 uniform sampler2D tex;
 
 /**
@@ -43,7 +46,7 @@ vec3 colorTemperatureToRGB(const in float temperature) {
 }
 
 void main() {
-    vec4 pixColor = texture2D(tex, v_texcoord);
+    vec4 pixColor = texture(tex, v_texcoord);
     vec3 color = pixColor.rgb;
 
 #ifdef WithQuickAndDirtyLuminancePreservation
@@ -53,5 +56,5 @@ void main() {
 
     color = mix(color, color * colorTemperatureToRGB(Temperature), Strength);
 
-    gl_FragColor = vec4(color, pixColor.a);
+    fragColor = vec4(color, pixColor.a);
 }
