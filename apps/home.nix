@@ -3,6 +3,7 @@
 {
   imports = [
     ./bash/home.nix
+    ./fish/home.nix
     ./git/home.nix
     ./fonts/home.nix
     ./lsp/home.nix
