@@ -61,8 +61,8 @@
 
   programs.git = {
     enable = true;
-    userName = "Felix Söderman";
-    userEmail = "felixsoderman+github@gmail.com";
+    settings.user.name = "Felix Söderman";
+    settings.user.email = "felixsoderman+github@gmail.com";
   };
 
   # Enable Home Manager
