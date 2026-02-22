@@ -11,7 +11,6 @@
           "--cmd start-hyprland"
           "--asterisks"
           "--remember"
-          "--remember-user-session"
           "--theme 'time=lightmagenta;container=darkgray;border=magenta;title=magenta;greet=lightcyan;prompt=lightmagenta;input=lightgray;action=lightblue;button=yellow;text=white'"
         ];
         user = "greeter";
