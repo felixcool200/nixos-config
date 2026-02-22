@@ -60,10 +60,14 @@
   # Enable touchpad support
   services.libinput.enable = true;
 
+  # Default shell
+  programs.fish.enable = true;
+
   # Define the user
   users.users.felixcool200 = {
     isNormalUser = true;
     description = "Felix Söderman";
+    shell = pkgs.fish;
     extraGroups = [
       "networkmanager"
       "wheel"
