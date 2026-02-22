@@ -13,6 +13,7 @@
     /etc/nixos/hardware-configuration.nix
     ./hyprland/conf.nix
     #./gnome/conf.nix
+    ./apps/wireshark/conf.nix
   ];
 
   # Bootloader
@@ -75,16 +76,12 @@
     ];
   };
 
-  # Allow Wireshark to capture traffic
-  programs.wireshark.enable = true;
 
   # System-wide packages
   environment.systemPackages = with pkgs; [
     vim
     wget
     htop
-    wireshark
-    git
   ];
 
   # Set the system state version
