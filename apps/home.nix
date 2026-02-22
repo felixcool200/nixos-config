@@ -19,5 +19,7 @@
     ./spotify/home.nix
     ./discord/home.nix
     ./walker/home.nix
+    ./yazi/home.nix
+    ./gtk/home.nix
   ];
 }

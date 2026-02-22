@@ -46,13 +46,12 @@
   # Qt theme to match GTK
   qt = {
     enable = true;
-    platformTheme.name = "gtk3";
-    style.name = "gtk2";
+    platformTheme.name = "qtct";
+    style.name = "kvantum";
   };
-  
+
   # Environment variables for consistent theming
   home.sessionVariables = {
     GTK_THEME = "Dracula";
-    QT_QPA_PLATFORMTHEME = "gtk3";
   };
 }
