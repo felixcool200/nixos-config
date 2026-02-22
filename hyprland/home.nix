@@ -84,7 +84,7 @@
 
     # Window rules
     windowrule = [
-      "bordercolor rgb(ff5555),xwayland:1" # check if window is xwayland
+      "border_color rgb(ff5555), match:xwayland 1" # check if window is xwayland
     ];
 
     # Autostart applications
