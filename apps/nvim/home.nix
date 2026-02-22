@@ -1,24 +1,7 @@
 { pkgs, lib, ... }:
 
 {
-  # Nerd font for nvim config
-  fonts.fontconfig.enable = true;
   home.packages = with pkgs; [
-    nerd-fonts.fira-code
-    nerd-fonts.jetbrains-mono
-
-    # LSP
-    lua-language-server
-    llvmPackages.clang-tools
-    pyright
-    nil
-    rustup
-    zls
-
-    # AI
-    #gemini-cli
-    claude-code
-
     # Extra packages for config
     #luajit
     #luajitPackages.luarocks
@@ -27,7 +10,6 @@
     tree-sitter
     nodejs # Optional: for some treesitter grammars
     fd # Optional: for Telescope warnings
-
   ];
 
   # Install Neovim
