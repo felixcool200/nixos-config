@@ -8,7 +8,7 @@
         command = lib.concatStringsSep " " [
           "${pkgs.tuigreet}/bin/tuigreet"
           "--time"
-          "--cmd Hyprland"
+          "--cmd start-hyprland"
           "--asterisks"
           "--remember"
           "--remember-user-session"

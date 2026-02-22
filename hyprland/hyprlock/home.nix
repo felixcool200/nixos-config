@@ -7,10 +7,8 @@ in
     enable = true;
     settings = {
       general = {
-        disable_loading_bar = true;
-        grace = 1;
         hide_cursor = true;
-        no_fade_in = false;
+        immediate_render = true;
       };
 
       # Smooth animations with bezier curves
@@ -35,8 +33,8 @@ in
           # path = "screenshot";
           path = "";
           color = "rgb(${colors.backgroundRgb})";
-          blur_passes = 10; # 1 - 10 lower = faster
-          blur_size = 20; # 1 - 20 lower = faster
+          blur_passes = 0;
+          blur_size = 0;
 
         }
       ];
@@ -97,11 +95,11 @@ in
           timeout = 300; # 5 minutes
           on-timeout = "loginctl lock-session";
         }
-        {
-          timeout = 600; # 10 minutes
-          on-timeout = "hyprctl dispatch dpms off";
-          on-resume = "hyprctl dispatch dpms on";
-        }
+        # {
+        #   timeout = 600; # 10 minutes
+        #   on-timeout = "hyprctl dispatch dpms off";
+        #   on-resume = "hyprctl dispatch dpms on";
+        # }
       ];
     };
   };

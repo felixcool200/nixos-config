@@ -18,5 +18,6 @@
     ./helix/home.nix
     ./spotify/home.nix
     ./discord/home.nix
+    ./walker/home.nix
   ];
 }

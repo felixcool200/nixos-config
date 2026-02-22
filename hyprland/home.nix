@@ -3,7 +3,7 @@
     ./hyprlock/home.nix
     ./hyprpaper/home.nix
     ./waybar/home.nix
-    ./wofi/home.nix
+    # ./wofi/home.nix
     ./gtk/home.nix
     ./wlogout/home.nix
     ./swaync/home.nix
