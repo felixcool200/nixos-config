@@ -1,3 +1,5 @@
+{ pkgs, ... }:
+
 {
   imports = [
     ./hyprlock/home.nix
@@ -7,6 +9,16 @@
     ./wlogout/home.nix
     ./swaync/home.nix
   ];
+
+  home.packages = [ pkgs.grimblast ];
+
+  xdg.desktopEntries.screenshot = {
+    name = "Screenshot";
+    comment = "Take a screenshot of a selected area";
+    exec = "grimblast copy area";
+    terminal = false;
+    categories = [ "Utility" ];
+  };
 
   programs.kitty.enable = true; # required for the default Hyprland config
   wayland.windowManager.hyprland.enable = true; # enable Hyprland
