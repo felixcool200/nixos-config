@@ -1,12 +1,7 @@
-{ ... }: {
-  flake.nixosModules.lsp = { pkgs, ... }: {
-    environment.systemPackages = with pkgs; [
-      lua-language-server
-      llvmPackages.clang-tools
-      pyright
-      nil
-      rustup
-      zls
-    ];
+{ self, ... }: {
+  flake.nixosModules.lsp = { pkgs, ... }:
+  let self' = self.packages.${pkgs.stdenv.hostPlatform.system};
+  in {
+    environment.systemPackages = [ self'.lsp-tools ];
   };
 }

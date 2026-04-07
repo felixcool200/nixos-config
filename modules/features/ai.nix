@@ -1,8 +1,7 @@
-{ ... }: {
-  flake.nixosModules.ai = { pkgs, ... }: {
-    environment.systemPackages = [
-      #pkgs.gemini-cli
-      pkgs.claude-code
-    ];
+{ self, ... }: {
+  flake.nixosModules.ai = { pkgs, ... }:
+  let self' = self.packages.${pkgs.stdenv.hostPlatform.system};
+  in {
+    environment.systemPackages = [ self'.ai-tools ];
   };
 }

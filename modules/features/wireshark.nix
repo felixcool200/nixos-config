@@ -1,7 +1,8 @@
-{ self, ... }: {
-  flake.nixosModules.wireshark = { ... }: {
-    imports = [
-      (self + "/apps/wireshark/conf.nix")
-    ];
+{ ... }: {
+  flake.nixosModules.wireshark = { pkgs, ... }: {
+    programs.wireshark = {
+      enable = true;
+      package = pkgs.wireshark;
+    };
   };
 }
